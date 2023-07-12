@@ -27,4 +27,18 @@ module.exports = {
       config: {},
     },
   ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'choukui',
+          name: 'my-electron'
+        },
+        authToken: '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',
+        prerelease: false,
+        draft: true
+      }
+    }
+  ]
 };
