@@ -35,6 +35,7 @@ jobs:
                 # 执行更新版本和发布的命令
                 version: npm exec changeset version
                 publish: npm exec changeset publish
+                setupGitUser: false
                 createGithubReleases: false
               env:
                 # 这里需要几个 Token 变量
