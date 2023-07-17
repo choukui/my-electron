@@ -29,8 +29,16 @@ jobs:
               run: npm run make
 
             - name: Create Release Pull Request or Publish
-              run: npm run publish
-
+              id: changesets
+              uses: changesets/action@v1
+              with:
+                # 执行更新版本和发布的命令
+                version: npm exec changeset version
+                publish: npm exec changeset publish
+              env:
+                # 这里需要几个 Token 变量
+                # GITHUB_TOKEN 是 CI 里自带的默认 token
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             
   
             
