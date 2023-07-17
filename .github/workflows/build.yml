@@ -42,6 +42,7 @@ jobs:
                 path: out
 
             - name: release
-              run: npm run publish
+              uses: google-github-actions/release-please-action@v3.1.2
+              
       
             
