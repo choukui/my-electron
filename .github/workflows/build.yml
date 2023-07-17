@@ -26,33 +26,23 @@ jobs:
               run: npm install
 
             - name: Build Electron App
-              run: npm run package
+              run: npm run make
               env:
                 GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
-            - name: Cleanup Artifacts for Windows
-              if: matrix.os == 'windows-latest'
-              run: |
-                npx rimraf "dist/!(*.exe)"
-
-            - name: Cleanup Artifacts for MacOS
-              if: matrix.os == 'macos-latest'
-              run: |
-                npx rimraf "dist/!(*.dmg)"
-
-            - name: upload artifacts
-              uses: actions/upload-artifact@v3.0.0
+            - name: Create Release Pull Request or Publish
+              id: changesets
+              uses: changesets/action@v1
               with:
-                name: ${{ matrix.os }}
-                path: dist
-
-            - name: release
-              uses: softprops/action-gh-release@v0.1.14
-              if: startsWith(github.ref, 'refs/tags/')
-              with:
-                files: "dist/**"
+                # 执行更新版本和发布的命令
+                version: npm exec changeset version
+                publish: npm exec changeset publish
+                commit: '[ci] release'
+                title: '[ci] release'
               env:
-                GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+                # 这里需要几个 Token 变量
+                # GITHUB_TOKEN 是 CI 里自带的默认 token
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             
   
             

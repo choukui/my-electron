@@ -1,7 +1,7 @@
 {
   "name": "my-electron",
   "productName": "my-electron",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "My Electron application description",
   "main": "src/index.js",
   "scripts": {
@@ -18,12 +18,14 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@changesets/cli": "^2.26.2",
     "@electron-forge/publisher-github": "^6.2.1",
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.2.1",
     "@electron-forge/maker-deb": "^6.2.1",
+    "@electron-forge/maker-dmg": "^6.2.1",
     "@electron-forge/maker-rpm": "^6.2.1",
     "@electron-forge/maker-squirrel": "^6.2.1",
     "@electron-forge/maker-zip": "^6.2.1",
