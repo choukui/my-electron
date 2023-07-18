@@ -35,7 +35,7 @@ module.exports = {
           owner: 'choukui',
           name: 'my-electron'
         },
-        authToken: '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',
+        authToken: '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',
         prerelease: false,
         draft: true
       }
