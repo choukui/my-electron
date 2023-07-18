@@ -34,10 +34,7 @@ module.exports = {
         repository: {
           owner: 'choukui',
           name: 'my-electron'
-        },
-        authToken: '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',
-        prerelease: false,
-        draft: true
+        }
       }
     }
   ]
